@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/pages/menu.dart';
 
 class Success extends StatefulWidget {
   const Success({super.key});
@@ -48,10 +49,14 @@ Widget pagoExitoso(context) {
         ),
         const SizedBox(height: 20),
         ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            surfaceTintColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
           onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const Success()),
+              MaterialPageRoute(builder: (context) => const Menu()),
             );
           },
           child: const Text('Volver'),

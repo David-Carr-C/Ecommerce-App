@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:proyecto/pages/menu.dart';
 
 const String email = 'admin@mail.com';
 const String password = 'Inicio1';
@@ -91,7 +92,12 @@ class _LoginState extends State<Login> {
                             onPressed: () {
                               if (emailInput == email &&
                                   passwordInput == password) {
-                                Navigator.pushNamed(context, '/home');
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Menu(),
+                                  ),
+                                );
                               } else {
                                 showDialog(
                                   context: context,
@@ -132,7 +138,14 @@ class _LoginState extends State<Login> {
                           ),
                           const SizedBox(height: 10),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Menu(),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               surfaceTintColor: Colors.grey[300],

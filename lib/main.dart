@@ -73,37 +73,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      //accion para ir a la pagina menu
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Menu()),
+                        MaterialPageRoute(builder: (context) => const Login()),
                       );
                     },
                     child: const Text('Login'),
                   ),
                   ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Login()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                         side: const BorderSide(color: Colors.white),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Login()),
-                        );
-                      },
-                      child: const Text('Sign Up',
-                          style: TextStyle(color: Colors.white)),
                     ),
-                  ],
-                ),
+                    child: const Text('Sign Up',
+                        style: TextStyle(color: Colors.white)),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

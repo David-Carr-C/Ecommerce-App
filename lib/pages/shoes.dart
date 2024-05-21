@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto/screens/details/details.dart';
 import 'package:proyecto/widgets/HeaderWidget.dart';
 
 class Shoes extends StatefulWidget {
@@ -94,39 +95,47 @@ class _ProductsState extends State<Products> {
     String subtitulo,
     String precio,
   ) {
-    return Container(
-      width: (widthpantalla / 2) - 15,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              "assets/$imagen",
-              width: (widthpantalla / 2) - 8,
-              height: (widthpantalla / 1.5),
-              fit: BoxFit.cover,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Details()),
+        );
+      },
+      child: Container(
+        width: (widthpantalla / 2) - 15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                "assets/$imagen",
+                width: (widthpantalla / 2) - 8,
+                height: (widthpantalla / 1.5),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          SizedBox(height: 10),
-          Text(
-            titulo,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            SizedBox(height: 10),
+            Text(
+              titulo,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(subtitulo),
-          Text(
-            precio,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            Text(subtitulo),
+            Text(
+              precio,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
