@@ -38,6 +38,7 @@ dependencies:
 
   # New dependencies
   flutter_native_splash: ^2.2.4
+  carousel_slider: ^4.2.1
 
 
 flutter_native_splash:
@@ -100,6 +101,7 @@ flutter:
     - assets/joyeria (5).jpg
     - assets/joyeria (6).jpg
     - assets/joyeria (7).jpg
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
