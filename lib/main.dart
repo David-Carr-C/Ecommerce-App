@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:proyecto/pages/menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
@@ -69,10 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const LoginScreen()),
-                      // );
+                      //accion para ir a la pagina menu
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Menu()),
+                      );
                     },
                     child: const Text('Login'),
                   ),
