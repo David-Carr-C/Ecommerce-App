@@ -31,6 +31,7 @@ class _LoginState extends State<Login> {
             ),
             Container(
               alignment: Alignment.center,
+              padding: const EdgeInsets.only(top: 20),
               margin: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.45),
               child: Center(

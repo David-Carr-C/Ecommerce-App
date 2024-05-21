@@ -26,27 +26,27 @@ Widget pagoExitoso(context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Pago exitoso',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 20),
-        Icon(
+        const SizedBox(height: 20),
+        const Icon(
           Icons.check_circle,
           color: Colors.green,
           size: 100,
         ),
-        SizedBox(height: 20),
-        Text(
+        const SizedBox(height: 20),
+        const Text(
           '¡Gracias por tu compra!',
           style: TextStyle(
             fontSize: 20,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
             Navigator.push(
@@ -54,7 +54,7 @@ Widget pagoExitoso(context) {
               MaterialPageRoute(builder: (context) => const Success()),
             );
           },
-          child: Text('Volver'),
+          child: const Text('Volver'),
         ),
       ],
     ),

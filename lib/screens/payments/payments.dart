@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:proyecto/screens/success/success.dart';
 
 class Payments extends StatefulWidget {
-  const Payments({super.key});
+  const Payments({Key? key, required this.currentItem, required this.quantity})
+      : super(key: key);
+
+  final Map<String, dynamic> currentItem;
+  final int quantity;
 
   @override
   State<Payments> createState() => _PaymentsState();
@@ -14,55 +18,76 @@ class _PaymentsState extends State<Payments> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Pagos'),
+        title: const Text('Pagos'),
         centerTitle: true,
         backgroundColor: Colors.grey[200],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            suCompraDetalle(context),
-            pasarelaDePago(context),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Center(
+            child: Column(
+              children: [
+                suCompraDetalle(context, widget.currentItem, widget.quantity),
+                pasarelaDePago(context),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 }
 
-Widget suCompraDetalle(context) {
+Widget suCompraDetalle(context, currentItem, quantity) {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Detalle de tu compra',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 20),
-        ListTile(
-          title: Text('Producto 1'),
-          subtitle: Text('Precio: \$100'),
-          trailing: Text('Cantidad: 1'),
+        const SizedBox(height: 10),
+        Card(
+          surfaceTintColor: Colors.grey[300],
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    image: DecorationImage(
+                      image: AssetImage(currentItem['items'][0]),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: Text('${currentItem['title']}'),
+                    subtitle: Text('Precio: \$${currentItem['price']}'),
+                    trailing: Text('Cantidad: $quantity',
+                        style: const TextStyle(fontSize: 12)),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-        ListTile(
-          title: Text('Producto 2'),
-          subtitle: Text('Precio: \$200'),
-          trailing: Text('Cantidad: 2'),
-        ),
-        ListTile(
-          title: Text('Producto 3'),
-          subtitle: Text('Precio: \$300'),
-          trailing: Text('Cantidad: 3'),
-        ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Text(
-          'Total: \$900',
-          style: TextStyle(
+          'Total: \$${currentItem['price'] * quantity}',
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -74,18 +99,18 @@ Widget suCompraDetalle(context) {
 
 Widget pasarelaDePago(context) {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Pasarela de pagos',
+        const Text(
+          'Pago con tarjeta',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextField(
           decoration: InputDecoration(
             labelText: 'Nombre en la tarjeta',
@@ -96,7 +121,7 @@ Widget pasarelaDePago(context) {
             fillColor: Colors.grey[300],
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextField(
           decoration: InputDecoration(
             labelText: 'Número de tarjeta',
@@ -105,11 +130,11 @@ Widget pasarelaDePago(context) {
             ),
             filled: true,
             fillColor: Colors.grey[300],
-            prefixIcon: Icon(Icons.credit_card),
+            prefixIcon: const Icon(Icons.credit_card),
           ),
           keyboardType: TextInputType.number,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Row(
           children: [
             Expanded(
@@ -125,7 +150,7 @@ Widget pasarelaDePago(context) {
                 keyboardType: TextInputType.datetime,
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
@@ -135,14 +160,14 @@ Widget pasarelaDePago(context) {
                   ),
                   filled: true,
                   fillColor: Colors.grey[300],
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                 ),
                 keyboardType: TextInputType.number,
               ),
             ),
           ],
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Center(
           child: ElevatedButton.icon(
             onPressed: () {
@@ -151,11 +176,12 @@ Widget pasarelaDePago(context) {
                 MaterialPageRoute(builder: (context) => const Success()),
               );
             },
-            icon: Icon(Icons.payment),
-            label: Text('Pagar'),
+            icon: const Icon(Icons.payment),
+            label: const Text('Pagar'),
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-              textStyle: TextStyle(fontSize: 18),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              textStyle: const TextStyle(fontSize: 18),
+              surfaceTintColor: Colors.grey[300],
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
